@@ -14,7 +14,7 @@ main {
   flex-wrap: wrap;
   gap: 20px;
 }
-
+  
 .character-card {
   background-color: #fff;
   padding: 15px;

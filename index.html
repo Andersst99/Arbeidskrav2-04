@@ -9,7 +9,28 @@
   <body>
     <main>
       <h1>Star Wars Characters</h1>
+      <div>
+        <label for="species-filter">Filter by Species:</label>
+        <select id="species-filter">
+          <option value="all">All</option>
+          <option value="Human">Human</option>
+          <option value="Wookiee">Wookiee</option>
+          <option value="Droid">Droid</option>
+        </select>
+      </div>
       <div id="characters-container"></div>
+      <div>
+        <h3>Create New Character</h3>
+        <form id="create-character-form">
+          <label for="name">Name:</label>
+          <input type="text" id="name" required />
+          <label for="birth-year">Birth Year:</label>
+          <input type="text" id="birth-year" required />
+          <label for="species">Species:</label>
+          <input type="text" id="species" required />
+          <button type="submit">Add Character</button>
+        </form>
+      </div>
     </main>
     <script src="js/api.js"></script>
     <script src="js/characters.js"></script>

@@ -8,17 +8,46 @@ const fetchCharacters = async () => {
   }
 };
 
+const fetchCharacterSpecies = async (speciesUrl) => {
+  try {
+    const response = await fetch(speciesUrl);
+    const speciesData = await response.json();
+    return speciesData.name; // Return species name
+  } catch (error) {
+    console.error("Feil ved henting av art:", error);
+    return "Unknown species"; // Default to "Unknown species" if error occurs
+  }
+};
+
 const renderCharacters = (characters) => {
   const container = document.getElementById("characters-container");
   container.innerHTML = ""; // Tøm containeren før vi legger til nye kort
-  characters.forEach((character) => {
+
+  characters.forEach(async (character) => {
+    const speciesName = await fetchCharacterSpecies(character.species[0]); // Hent artens navn
+
     const card = document.createElement("div");
     card.classList.add("character-card");
+
+    // Bakgrunnsfarge avhengig av art
+    let speciesColor = "white"; // Default color
+    if (speciesName === "Wookie") {
+      speciesColor = "red";
+    } else if (speciesName === "Human") {
+      speciesColor = "blue";
+    } else if (speciesName === "Droid") {
+      speciesColor = "green";
+    }
+
     card.innerHTML = `
         <h2>${character.name}</h2>
         <p>Født: ${character.birth_year}</p>
-        <p>Species: ${character.species}</p>
+        <p>Species: ${speciesName}</p>
+        <button class="delete-btn">Delete</button>
+        <button class="edit-btn">Edit</button>
       `;
+    card.style.backgroundColor = speciesColor; // Set the background color dynamically
+
     container.appendChild(card);
   });
 };

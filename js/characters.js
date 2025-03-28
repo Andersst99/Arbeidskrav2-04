@@ -15,13 +15,13 @@ const fetchCharacterSpecies = async (speciesUrl) => {
     return speciesData.name; // Return species name
   } catch (error) {
     console.error("Feil ved henting av art:", error);
-    return "Unknown species"; // Default to "Unknown species" if error occurs
+    return "Unknown species"; // Default "Unknown species" hvis feil oppstår
   }
 };
 
 const renderCharacters = (characters) => {
   const container = document.getElementById("characters-container");
-  container.innerHTML = ""; // Tøm containeren før vi legger til nye kort
+  container.innerHTML = ""; // Tømmer containeren før vi legger til nye kort
 
   characters.forEach(async (character) => {
     const speciesName = await fetchCharacterSpecies(character.species[0]); // Hent artens navn
@@ -40,13 +40,13 @@ const renderCharacters = (characters) => {
     }
 
     card.innerHTML = `
-        <h2>${character.name}</h2>
-        <p>Født: ${character.birth_year}</p>
-        <p>Species: ${speciesName}</p>
-        <button class="delete-btn">Delete</button>
-        <button class="edit-btn">Edit</button>
-      `;
-    card.style.backgroundColor = speciesColor; // Set the background color dynamically
+          <h2>${character.name}</h2>
+          <p>Født: ${character.birth_year}</p>
+          <p>Species: ${speciesName}</p>
+          <button class="delete-btn">Delete</button>
+          <button class="edit-btn">Edit</button>
+        `;
+    card.style.backgroundColor = speciesColor;
 
     container.appendChild(card);
   });

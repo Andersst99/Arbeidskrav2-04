@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kjøretøy</title>
+    <link rel="stylesheet" href="css/vehicle.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Kjøretøy</h1>
+      <p>Saldo: <span id="saldo">0</span> credits</p>
+    </header>
+
+    <main>
+      <section id="vehicles-container"></section>
+      <div class="pagination">
+        <button id="prev">Forrige</button>
+        <button id="next">Neste</button>
+      </div>
+
+      <h2>Dine kjøretøy</h2>
+      <section id="mine-vehicles"></section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/vehicles.js"></script>
+    <script src="js/crudVehicles.js"></script>
+  </body>
+</html>
